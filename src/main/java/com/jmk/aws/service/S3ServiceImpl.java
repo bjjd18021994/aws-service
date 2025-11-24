@@ -39,7 +39,8 @@ public class S3ServiceImpl implements S3Service{
 	private String bucketName;
     private static final String FORWARD_SLASH="/";
 
-    public List<PutObjectResult> uploadFile(MultipartFile[] multipartFiles) {
+    @Override
+    public List<PutObjectResult> uploadFiles(MultipartFile[] multipartFiles) {
         List<PutObjectResult> putObjectResults = new ArrayList<>();
 
         Arrays.stream(multipartFiles)
@@ -54,7 +55,8 @@ public class S3ServiceImpl implements S3Service{
 
         return putObjectResults;
     }
-    
+
+    @Override
 	public PutObjectResult uploadFile(String category, String id, String filename, MultipartFile multipartFile) {
 		PutObjectResult putObjectResult = null;
 		try {
